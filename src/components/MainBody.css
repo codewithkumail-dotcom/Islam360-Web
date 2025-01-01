@@ -1,0 +1,67 @@
+
+@media (max-width: 640px) {
+    .responsive-container {
+      max-width: 100%;
+      max-height: auto;
+      padding: 8px;
+    }
+  
+    .responsive-heading {
+      font-size: 16px;
+    }
+  
+    /* .responsive-card {
+      
+    } */
+  
+
+  
+    .responsive-question-list {
+      max-height: 400px;
+      padding: 8px;
+    }
+  
+    .responsive-question-item {
+      max-height: 40px;
+      padding: 4px;
+      font-size: 13px;
+    }
+  
+    .responsive-question-item img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .responsive-item {
+      width: 25%; /* Reduce width */
+      /* padding: 0.75rem; Reduce padding */
+    }
+  
+    .responsive-item img {
+      height: 20px; /* Reduce image size */
+      width: 20px;
+    }
+  
+    .responsive-item p {
+      font-size: 13px; /* Reduce font size */
+    }
+/* for second block */
+    .margin-bottom{
+      margin-bottom: 50px;
+    }
+    .responsive-item2 {
+      width: 40%; /* Increase block width to fit mobile layout */
+      padding: 0.5rem; /* Adjust padding for compact spacing */
+      gap: 0.3rem;
+    }
+  
+    .responsive-item2 img {
+      height: 15px; /* Reduce image size */
+      width: 15px;
+    }
+    .responsive-item2 p {
+      font-size: 13px; /* Reduce font size for text */
+    }
+  }

@@ -1,0 +1,70 @@
+.custom-gradient {
+    position: relative;
+    /* height: 98px; */
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .custom-gradient:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(270deg, #E5C690 0%, #B17D8A 100%);
+    transform: rotate(180deg); /* Rotate only the gradient */
+    z-index: -1; /* Push the background behind content */
+  }
+  
+  .inter-font {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    color: #3B3B3B;
+  }
+  
+  .vertical-line {
+    width: 2px;
+    background-color: #000;
+    height: 100%;
+  }
+  
+  .Noto-Nastaliq-Urdu {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    /* font-size: 14px; */
+    font-weight: 500;
+    line-height: 35px;
+    text-align: right;
+  }
+  
+  
+  /* Media Query for Mobile Screens */
+  @media (max-width: 660px ) {
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+      
+      
+    }
+  
+    .search-bar {
+      width: 60%;
+      margin-bottom: 20px;
+    }
+  
+    .buttons-section {
+      flex-direction: row;
+      width: 90%;
+      gap: 8px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+    }
+  
+    .date-section {
+      width: 90%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+  

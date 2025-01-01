@@ -3,7 +3,8 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Ads from './components/Ads'
 import MainBody from './components/MainBody'
-import Footer from './components/PageFooter'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Footer from "../src/components/PageFooter"
 
 function App() {
   
@@ -11,11 +12,14 @@ function App() {
 
   return (
     <>
-      <Navbar/>
-      <Ads/>
-      <MainBody/>
+     <Navbar/>
+    <Routes>
+      <Route path='/home' element={<MainBody/>}/>
+    
+      </Routes>
       <Footer/>
     </>
+    
   )
 }
 

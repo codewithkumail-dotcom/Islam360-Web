@@ -14,6 +14,7 @@ import ThirdIcon from '../assets/iconamoon_trend-up-light.svg'
 import fourthIcon from '../assets/solar_history-bold.svg'
 import eyeIcon from '../assets/eyeIcon.svg'
 import commentIcon from '../assets/comment.svg'
+import Ads from './Ads';
 
 
 
@@ -36,6 +37,7 @@ const MainBody = () => {
     return (
 
         <div>
+            <Ads/>
             <div className='responsive-container max-w-[901px] max-h-[872px] bg-[#FFFDF6] border-[0.2px] border-black p-4'>
                 <div className='responsive-heading Noto-Nastaliq-Urdu text-[18px] font-medium  '>
                     سب سے اہم موضوع

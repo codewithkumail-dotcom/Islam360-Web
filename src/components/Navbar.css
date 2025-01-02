@@ -20,7 +20,7 @@
   .inter-font {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    font-size: 25px;
+    /* font-size: 25px; */
     color: #3B3B3B;
   }
   
@@ -40,7 +40,7 @@
   
   
   /* Media Query for Mobile Screens */
-  @media (max-width: 660px ) {
+  /* @media (max-width: 660px ) {
     nav {
       flex-direction: column;
       align-items: flex-start;
@@ -67,4 +67,4 @@
       margin-bottom: 20px;
     }
   }
-  
+   */

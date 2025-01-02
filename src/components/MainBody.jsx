@@ -18,6 +18,35 @@ import Ads from './Ads';
 
 
 
+function CustomTabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+        </div>
+    );
+}
+
+CustomTabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
+
 
 
 const MainBody = () => {
@@ -33,11 +62,15 @@ const MainBody = () => {
 
     ]);
 
+    const [value, setValue] = React.useState(0);
 
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    }
     return (
-
         <div>
-            <Ads/>
+            <Ads />
+
             <div className='responsive-container max-w-[901px] max-h-[872px] bg-[#FFFDF6] border-[0.2px] border-black p-4'>
                 <div className='responsive-heading Noto-Nastaliq-Urdu text-[18px] font-medium  '>
                     سب سے اہم موضوع
@@ -69,54 +102,129 @@ const MainBody = () => {
                 {/* <Tab label="Item Two" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} /> */}
 
-                {/* <Box> */}
-                    <div className='margin-bottom min-w-full max-h-[32px] flex justify-evenly  my-7 Noto-Nastaliq-Urdu'>
-                        {/* <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"> */}
+                <Box className='margin-bottom min-w-full max-h-[32px] flex justify-evenly  my-7 Noto-Nastaliq-Urdu'>
+                    {/* <div > */}
+                    <Tabs value={value} onChange={handleChange} className="flex justify-evenly w-full">
 
-                            {/* <Tab label="Item One"   {...a11yProps(0)} />  */}
+                        <Tab label={
                             <div className='responsive-item2 w-[23%] h-[100%]  bg-[#F7E7C9] border-[0.2px] border-black flex justify-center items-center py-1 gap-2'>
                                 <p className='text-[15px]'>فالو اپ سوال</p>
                                 <img className='h-[20px] w-[20px]' src={fourthIcon} alt="" />
-                            </div>
+                            </div>} {...a11yProps(0)} />
+                        <Tab label={
                             <div className='responsive-item2 w-[23%] h-[100%]  bg-[#F1D9D8] border-[0.2px] border-black flex justify-center items-center py-1 gap-2'>
                                 <p className='text-[15px]'>متضاد سوالات</p>
                                 <img className='h-[20px] w-[20px]' src={firstIcon} alt="" />
-                            </div>
+                            </div>} {...a11yProps(1)} />
+                        <Tab label={
                             <div className='responsive-item2 w-[23%] h-[100%]  bg-[#F1D9D8] border-[0.2px] border-black flex justify-center items-center py-1 gap-2'>
                                 <p className='text-[15px]'>ٹرینڈنگ سوالات</p>
                                 <img className='h-[20px] w-[20px]' src={ThirdIcon} alt="" />
-                            </div>
+                            </div>} {...a11yProps(2)} />
+                        <Tab label={
                             <div className='responsive-item2 w-[23%] h-[100%]  bg-[#F1D9D8] border-[0.2px] border-black flex justify-center items-center py-1 gap-2'>
                                 <p className='text-[15px]'>اسلام کو جانیں</p>
                                 <img className='h-[20px] w-[20px]' src={SecondIcon} alt="" />
-                            </div>
-                        {/* </Tabs> */}
-                    </div>
-                {/* </Box> */}
+                            </div>} {...a11yProps(3)} />
+                    </Tabs>
+                    {/* </div> */}
+                </Box>
                 {/*  ------------------------------------------------------------- */}
-                <div className='responsive-question-list max-w-[860px] max-h-[515px] overflow-y-auto bg-[#FBF8EF] border-[0.2px] border-black p-1'>
-                    <div>
-                        <ul className="Noto-Nastaliq-Urdu">
-                            {fields.map((question, index) => (
-                                <li key={index} className="responsive-question-item bg-[#FFFDF6] w-[97%] max-h-[53px] border-[0.2px] border-black m-2 p-2 text-[14px] text-right flex justify-between">
-                                    <div className='max-w-118 max-h-20px text-[14px] flex'>
-                                        <button className='mx-3' >
-                                            <img src={eyeIcon} alt="" className='h-[20px] w-[20px] ' />
-                                        </button>
-                                        <span> 104</span>
 
-                                        <button className='mx-3'>
-                                            <img src={commentIcon} alt="" className='h-[20px] w-[20px] ' />
-                                        </button>
-                                        <span> 104</span>
+                <Box className='responsive-question-list max-w-[860px] max-h-[515px] overflow-y-auto  bg-[#FBF8EF] border-[0.2px] border-black p-1'>
+                    <CustomTabPanel value={value} index={0}>
+                        <div>
+                            <ul className="Noto-Nastaliq-Urdu">
+                                {fields.map((question, index) => (
+                                    <li key={index} className="responsive-question-item bg-[#FFFDF6] w-[100%] max-h-[53px] border-[0.2px] border-black m-2 p-2 text-[14px] text-right flex justify-between">
+                                        <div className='max-w-118 max-h-20px text-[14px] flex'>
+                                            <button className='mx-3' >
+                                                <img src={eyeIcon} alt="" className='h-[20px] w-[20px] ' />
+                                            </button>
+                                            <span> 104</span>
 
-                                    </div>
-                                    {question}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
+                                            <button className='mx-3'>
+                                                <img src={commentIcon} alt="" className='h-[20px] w-[20px] ' />
+                                            </button>
+                                            <span> 104</span>
+
+                                        </div>
+                                        {question}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={1}>
+                        <div>
+                            <ul className="Noto-Nastaliq-Urdu">
+                                {fields.map((question, index) => (
+                                    <li key={index} className="responsive-question-item bg-[#FFFDF6] w-[100%] max-h-[53px] border-[0.2px] border-black m-2 p-2 text-[14px] text-right flex justify-between">
+                                        <div className='max-w-118 max-h-20px text-[14px] flex'>
+                                            <button className='mx-3' >
+                                                <img src={eyeIcon} alt="" className='h-[20px] w-[20px] ' />
+                                            </button>
+                                            <span> 104</span>
+
+                                            <button className='mx-3'>
+                                                <img src={commentIcon} alt="" className='h-[20px] w-[20px] ' />
+                                            </button>
+                                            <span> 104</span>
+
+                                        </div>
+                                        {question}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={2}>
+                        <div>
+                            <ul className="Noto-Nastaliq-Urdu">
+                                {fields.map((question, index) => (
+                                    <li key={index} className="responsive-question-item bg-[#FFFDF6] w-[100%] max-h-[53px] border-[0.2px] border-black m-2 p-2 text-[14px] text-right flex justify-between">
+                                        <div className='max-w-118 max-h-20px text-[14px] flex'>
+                                            <button className='mx-3' >
+                                                <img src={eyeIcon} alt="" className='h-[20px] w-[20px] ' />
+                                            </button>
+                                            <span> 104</span>
+
+                                            <button className='mx-3'>
+                                                <img src={commentIcon} alt="" className='h-[20px] w-[20px] ' />
+                                            </button>
+                                            <span> 104</span>
+
+                                        </div>
+                                        {question}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={3}>
+                        <div>
+                            <ul className="Noto-Nastaliq-Urdu">
+                                {fields.map((question, index) => (
+                                    <li key={index} className="responsive-question-item bg-[#FFFDF6] w-[100%] max-h-[53px] border-[0.2px] border-black m-2 p-2 text-[14px] text-right flex justify-between">
+                                        <div className='max-w-118 max-h-20px text-[14px] flex'>
+                                            <button className='mx-3' >
+                                                <img src={eyeIcon} alt="" className='h-[20px] w-[20px] ' />
+                                            </button>
+                                            <span> 104</span>
+
+                                            <button className='mx-3'>
+                                                <img src={commentIcon} alt="" className='h-[20px] w-[20px] ' />
+                                            </button>
+                                            <span> 104</span>
+
+                                        </div>
+                                        {question}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </CustomTabPanel>
+                </Box>
 
 
             </div>

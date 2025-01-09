@@ -13,7 +13,7 @@ function FollowUpQuestions() {
   ];
 
   return (
-    <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
+    <div className="p-6 bg-black rounded-lg shadow-lg bg">
       <h2 className="text-lg font-bold text-gray-800 mb-4">
         فالو اپ سوال
       </h2>
